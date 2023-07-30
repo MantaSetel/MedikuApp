@@ -27,4 +27,9 @@ export default [
             'Ketika Anda membutuhkan bantuan medis mendesak atau ingin menemukan layanan kesehatan terdekat dengan mudah, HealthNearby adalah solusinya.',
         image: require('./assets/images/slides/nearby.png'),
     },
+    {
+        id: '5',
+        title: 'Ayo mulai perjalanan kesehatan Anda!',
+        image: require('./assets/images/slides/kuku.png'),
+    },
 ];

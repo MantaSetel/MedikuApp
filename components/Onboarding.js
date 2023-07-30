@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
+import {
+    Animated,
+    Button,
+    FlatList,
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
 import slides from '../slides';
 import OnboardingItem from './OnboardingItem';
 import Paginator from './Paginator';
@@ -15,6 +22,12 @@ const Onboarding = () => {
     }).current;
 
     const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+
+    const handleSkipPressed = () => {
+        slidesRef.current.scrollToEnd();
+    };
+
+    const isLast = slidesRef.current && currentIndex === slides.length - 1;
 
     return (
         <View style={styles.container}>
@@ -38,8 +51,30 @@ const Onboarding = () => {
                 />
             </View>
             <View style={styles.bottomNavigation}>
-                <Paginator data={slides} scrollX={scrollX} />
-                <Text>Skip</Text>
+                {isLast ? (
+                    <View>
+                        <Button title="Hello" />
+                    </View>
+                ) : (
+                    <View
+                        style={{
+                            flex: 1,
+                            justifyContent: 'space-evenly',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Paginator data={slides} scrollX={scrollX} />
+                        <Text
+                            style={{
+                                paddingVertical: 10,
+                                paddingHorizontal: 30,
+                            }}
+                            onPress={handleSkipPressed}
+                        >
+                            Skip
+                        </Text>
+                    </View>
+                )}
             </View>
         </View>
     );

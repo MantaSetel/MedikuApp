@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Button,
     Image,
     StyleSheet,
     Text,
@@ -11,6 +12,7 @@ import { COLORS } from '../constants';
 
 const OnboardingItem = ({ item }) => {
     const { width } = useWindowDimensions();
+
     return (
         <View style={[styles.container, { width }]}>
             <Image
@@ -19,7 +21,9 @@ const OnboardingItem = ({ item }) => {
             />
             <View style={{ flex: 0.3, marginTop: 20 }}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.description}>{item.description}</Text>
+                {item.description ? (
+                    <Text style={styles.description}>{item.description}</Text>
+                ) : null}
             </View>
         </View>
     );
