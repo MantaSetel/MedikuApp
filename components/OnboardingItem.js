@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 0.6,
         justifyContent: 'center',
+        marginTop: 20,
     },
     title: {
         fontWeight: '800',

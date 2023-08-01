@@ -10,8 +10,10 @@ import {
 import slides from '../slides';
 import OnboardingItem from './OnboardingItem';
 import Paginator from './Paginator';
+import PrimaryButton from './PrimaryButton';
+import { getDataStorage, setDataStorage } from '../utils/storage.utils';
 
-const Onboarding = () => {
+const Onboarding = ({ navigation }) => {
     // eslint-disable-next-line no-unused-vars
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollX = useRef(new Animated.Value(0)).current;
@@ -28,6 +30,12 @@ const Onboarding = () => {
     };
 
     const isLast = slidesRef.current && currentIndex === slides.length - 1;
+
+    const handleGetStartedClicked = async () => {
+        setDataStorage('isFirstTime', 'false');
+        // redirect to login page
+        navigation.navigate('OnboardingAuth');
+    };
 
     return (
         <View style={styles.container}>
@@ -52,9 +60,9 @@ const Onboarding = () => {
             </View>
             <View style={styles.bottomNavigation}>
                 {isLast ? (
-                    <View>
-                        <Button title="Hello" />
-                    </View>
+                    <PrimaryButton onPress={handleGetStartedClicked}>
+                        Ayo Mulai
+                    </PrimaryButton>
                 ) : (
                     <View
                         style={{

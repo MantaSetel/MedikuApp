@@ -10,8 +10,12 @@ export default function PrimaryButton({ children, ...rest }) {
             buttonColor={COLORS.primary}
             width={320}
             height={56}
+            textColor="#fff"
             contentStyle={{ height: 56, justifyContent: 'center' }}
-            labelStyle={{ textAlignVertical: 'center', fontSize: 17 }}
+            labelStyle={{
+                textAlignVertical: 'center',
+                fontSize: 17,
+            }}
             {...rest}
         >
             {children}
