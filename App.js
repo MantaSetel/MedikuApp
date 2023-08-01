@@ -1,11 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView } from 'react-native';
 import OnboardingAuth from './screens/OnboardingAuth';
 import Onboarding from './components/Onboarding';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getDataStorage } from './utils/storage.utils';
+import Login from './screens/Login';
+import Register from './screens/Register';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,12 +41,12 @@ export default function App() {
                 />
                 <Stack.Screen
                     name="Login"
-                    component={OnboardingAuth}
+                    component={Login}
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="Register"
-                    component={OnboardingAuth}
+                    component={Register}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

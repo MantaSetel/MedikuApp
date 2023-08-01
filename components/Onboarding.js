@@ -1,17 +1,10 @@
 import React, { useRef, useState } from 'react';
-import {
-    Animated,
-    Button,
-    FlatList,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
 import slides from '../slides';
 import OnboardingItem from './OnboardingItem';
 import Paginator from './Paginator';
 import PrimaryButton from './PrimaryButton';
-import { getDataStorage, setDataStorage } from '../utils/storage.utils';
+import { setDataStorage } from '../utils/storage.utils';
 
 const Onboarding = ({ navigation }) => {
     // eslint-disable-next-line no-unused-vars
