@@ -8,7 +8,6 @@ import {
     View,
 } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
-import PrimaryButtonOutline from '../components/PrimaryButtonOutline';
 import AuthLayout from '../layouts/AuthLayout';
 import AuthHeader from '../components/AuthHeader';
 import { TextInput } from 'react-native-paper';
@@ -50,6 +49,7 @@ export default function Login({ navigation }) {
                                 height: 56,
                                 justifyContent: 'center',
                                 marginBottom: 16,
+                                backgroundColor: COLORS.background,
                             }}
                             mode="outlined"
                             label="Email"
@@ -73,6 +73,7 @@ export default function Login({ navigation }) {
                                 height: 56,
                                 justifyContent: 'center',
                                 marginBottom: 16,
+                                backgroundColor: COLORS.background,
                             }}
                             mode="outlined"
                             label="Password"
@@ -91,7 +92,9 @@ export default function Login({ navigation }) {
                             }}
                             textColor={COLORS.primary}
                         />
-                        <PrimaryButton style={{}}>Masuk</PrimaryButton>
+                        <PrimaryButton style={{ marginTop: 10 }}>
+                            Masuk
+                        </PrimaryButton>
                     </View>
                     <View style={styles.footer}>
                         <Text style={{ color: COLORS.primary_2, fontSize: 14 }}>
