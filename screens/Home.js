@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native';
-import React, { useEffect } from 'react';
-import { getDataStorage } from '../utils/storage.utils';
+import React from 'react';
 
 export default function Home() {
     return (
         <View
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
-            <Text>Hello world</Text>
+            <Text>Home</Text>
         </View>
     );
 }

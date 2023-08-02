@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Image,
     Keyboard,
@@ -14,7 +14,7 @@ import { TextInput } from 'react-native-paper';
 import { API_URL, COLORS } from '../constants';
 import TextField from '../components/TextField';
 import axios from 'axios';
-import { setDataStorage } from '../utils/storage.utils';
+import AuthContext from '../context/AuthContext';
 
 export default function Login({ navigation }) {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -23,6 +23,7 @@ export default function Login({ navigation }) {
     const [errors, setErrors] = useState({});
     const [loading, isLoading] = useState(false);
     const [secureTextEntry, setSecureTextEntry] = useState(true);
+    const { login } = useContext(AuthContext);
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
@@ -48,11 +49,9 @@ export default function Login({ navigation }) {
                 password,
             });
             if (res.status === 201) {
-                await setDataStorage('accessToken', res.data.data.accessToken);
-                await setDataStorage(
-                    'refreshToken',
-                    res.data.data.refreshToken
-                );
+                const accessToken = res.data.data.accessToken;
+                const refreshToken = res.data.data.refreshToken;
+                await login(accessToken, refreshToken);
                 setErrors({});
                 navigation.navigate('Home');
             }
