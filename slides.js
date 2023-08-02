@@ -30,6 +30,6 @@ export default [
     {
         id: '5',
         title: 'Ayo mulai perjalanan kesehatan Anda!',
-        image: require('./assets/images/slides/kuku.png'),
+        image: require('./assets/images/slides/started.png'),
     },
 ];
