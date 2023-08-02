@@ -4,6 +4,8 @@ import PrimaryButton from '../components/PrimaryButton';
 import PrimaryButtonOutline from '../components/PrimaryButtonOutline';
 import AuthLayout from '../layouts/AuthLayout';
 import AuthHeader from '../components/AuthHeader';
+import { Button } from 'react-native-paper';
+import { getDataStorage, removeDataStorage } from '../utils/storage.utils';
 
 export default function OnboardingAuth({ navigation }) {
     const handleClickLogin = () => {

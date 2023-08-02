@@ -1,3 +1,4 @@
 import { COLORS } from './theme';
+import { API_URL } from './api';
 
-export { COLORS };
+export { COLORS, API_URL };
