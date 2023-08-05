@@ -9,6 +9,10 @@ import MapIcon from '../components/icons/MapIcon';
 import ChatbotIcon from '../components/icons/ChatbotIcon';
 import ProfileIcon from '../components/icons/ProfileIcon';
 import AIIcon from '../components/icons/AIIcon';
+import Maps from './Maps';
+import AI from './AI';
+import Chatbot from './Chatbot';
+import Profile from './Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +55,7 @@ export default function Main() {
                 ></Tab.Screen>
                 <Tab.Screen
                     name="Map"
-                    component={Home}
+                    component={Maps}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
@@ -69,7 +73,7 @@ export default function Main() {
                 ></Tab.Screen>
                 <Tab.Screen
                     name="AI"
-                    component={Home}
+                    component={AI}
                     options={{
                         tabBarIcon: () => {
                             return (
@@ -90,7 +94,7 @@ export default function Main() {
                 ></Tab.Screen>
                 <Tab.Screen
                     name="Chatbot"
-                    component={Home}
+                    component={Chatbot}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
@@ -108,7 +112,7 @@ export default function Main() {
                 ></Tab.Screen>
                 <Tab.Screen
                     name="Profile"
-                    component={Home}
+                    component={Profile}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
