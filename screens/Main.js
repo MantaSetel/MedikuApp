@@ -90,6 +90,7 @@ export default function Main() {
                                 </View>
                             );
                         },
+                        tabBarVisible: false,
                     }}
                 ></Tab.Screen>
                 <Tab.Screen
