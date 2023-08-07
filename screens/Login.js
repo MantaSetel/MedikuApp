@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
                 const refreshToken = res.data.data.refreshToken;
                 await login(accessToken, refreshToken);
                 setErrors({});
-                navigation.navigate('Home');
+                navigation.navigate('Main');
             }
         } catch (error) {
             console.log('error', error.response.data);

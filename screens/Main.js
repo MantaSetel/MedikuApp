@@ -33,103 +33,101 @@ const screenOptions = {
 
 export default function Main() {
     return (
-        <NavigationContainer>
-            <Tab.Navigator screenOptions={screenOptions}>
-                <Tab.Screen
-                    name="Home"
-                    component={Home}
-                    options={{
-                        tabBarIcon: ({ focused }) => {
-                            return (
-                                <View
-                                    style={{
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <HomeIcon focused={focused} />
-                                </View>
-                            );
-                        },
-                    }}
-                ></Tab.Screen>
-                <Tab.Screen
-                    name="Map"
-                    component={Maps}
-                    options={{
-                        tabBarIcon: ({ focused }) => {
-                            return (
-                                <View
-                                    style={{
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <MapIcon focused={focused} />
-                                </View>
-                            );
-                        },
-                    }}
-                ></Tab.Screen>
-                <Tab.Screen
-                    name="AI"
-                    component={AI}
-                    options={{
-                        tabBarIcon: () => {
-                            return (
-                                <View
-                                    style={{
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        backgroundColor: COLORS.primary,
-                                        padding: 11,
-                                        borderRadius: 18,
-                                    }}
-                                >
-                                    <AIIcon />
-                                </View>
-                            );
-                        },
-                        tabBarVisible: false,
-                    }}
-                ></Tab.Screen>
-                <Tab.Screen
-                    name="Chatbot"
-                    component={Chatbot}
-                    options={{
-                        tabBarIcon: ({ focused }) => {
-                            return (
-                                <View
-                                    style={{
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <ChatbotIcon focused={focused} />
-                                </View>
-                            );
-                        },
-                    }}
-                ></Tab.Screen>
-                <Tab.Screen
-                    name="Profile"
-                    component={Profile}
-                    options={{
-                        tabBarIcon: ({ focused }) => {
-                            return (
-                                <View
-                                    style={{
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <ProfileIcon focused={focused} />
-                                </View>
-                            );
-                        },
-                    }}
-                ></Tab.Screen>
-            </Tab.Navigator>
-        </NavigationContainer>
+        <Tab.Navigator screenOptions={screenOptions}>
+            <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <View
+                                style={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <HomeIcon focused={focused} />
+                            </View>
+                        );
+                    },
+                }}
+            ></Tab.Screen>
+            <Tab.Screen
+                name="Map"
+                component={Maps}
+                options={{
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <View
+                                style={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <MapIcon focused={focused} />
+                            </View>
+                        );
+                    },
+                }}
+            ></Tab.Screen>
+            <Tab.Screen
+                name="AI"
+                component={AI}
+                options={{
+                    tabBarIcon: () => {
+                        return (
+                            <View
+                                style={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    backgroundColor: COLORS.primary,
+                                    padding: 11,
+                                    borderRadius: 18,
+                                }}
+                            >
+                                <AIIcon />
+                            </View>
+                        );
+                    },
+                    tabBarVisible: false,
+                }}
+            ></Tab.Screen>
+            <Tab.Screen
+                name="Chatbot"
+                component={Chatbot}
+                options={{
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <View
+                                style={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <ChatbotIcon focused={focused} />
+                            </View>
+                        );
+                    },
+                }}
+            ></Tab.Screen>
+            <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <View
+                                style={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <ProfileIcon focused={focused} />
+                            </View>
+                        );
+                    },
+                }}
+            ></Tab.Screen>
+        </Tab.Navigator>
     );
 }

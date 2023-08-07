@@ -20,6 +20,7 @@ export default function AI({ navigation }) {
                     source={require('../../assets/images/ai/ai-onboarding.png')}
                     style={[styles.image, { resizeMode: 'contain' }]}
                 />
+
                 <View style={styles.footer}>
                     <PrimaryButton onPress={handleClickSkin} marginBottom={16}>
                         Deteksi lewat kulit
