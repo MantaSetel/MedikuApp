@@ -29,70 +29,68 @@ export default function App() {
         checkIsFirstTime();
     }, []);
 
-    // return (
-    //     <NavigationContainer>
-    //         <AuthProvider>
-    //             {isFirstTime === null ? (
-    //                 // If isFirstTime is still null, show a loading or splash screen
-    //                 <></>
-    //             ) : isFirstTime ? (
-    //                 // If isFirstTime is true, show Onboarding
-    //                 <Stack.Navigator>
-    //                     <Stack.Screen
-    //                         name="Onboarding"
-    //                         component={Onboarding}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="OnboardingAuth"
-    //                         component={OnboardingAuth}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Login"
-    //                         component={Login}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Register"
-    //                         component={Register}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Home"
-    //                         component={Home}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                 </Stack.Navigator>
-    //             ) : (
-    //                 // If isFirstTime is false, show OnboardingAuth
-    //                 <Stack.Navigator>
-    //                     <Stack.Screen
-    //                         name="OnboardingAuth"
-    //                         component={OnboardingAuth}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Login"
-    //                         component={Login}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Register"
-    //                         component={Register}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                     <Stack.Screen
-    //                         name="Home"
-    //                         component={Home}
-    //                         options={{ headerShown: false }}
-    //                     />
-    //                 </Stack.Navigator>
-    //             )}
-    //             <StatusBar style="auto" />
-    //         </AuthProvider>
-    //     </NavigationContainer>
-    // );
-
-    return <Main />;
+    return (
+        <NavigationContainer>
+            <AuthProvider>
+                {isFirstTime === null ? (
+                    // If isFirstTime is still null, show a loading or splash screen
+                    <></>
+                ) : isFirstTime ? (
+                    // If isFirstTime is true, show Onboarding
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name="Onboarding"
+                            component={Onboarding}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="OnboardingAuth"
+                            component={OnboardingAuth}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Login"
+                            component={Login}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Register"
+                            component={Register}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Main"
+                            component={Main}
+                            options={{ headerShown: false }}
+                        />
+                    </Stack.Navigator>
+                ) : (
+                    // If isFirstTime is false, show OnboardingAuth
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name="OnboardingAuth"
+                            component={OnboardingAuth}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Login"
+                            component={Login}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Register"
+                            component={Register}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Main"
+                            component={Main}
+                            options={{ headerShown: false }}
+                        />
+                    </Stack.Navigator>
+                )}
+                <StatusBar style="auto" />
+            </AuthProvider>
+        </NavigationContainer>
+    );
 }
