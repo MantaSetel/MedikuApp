@@ -7,10 +7,11 @@ import AIHeader from '../../components/AIHeader';
 
 export default function AI({ navigation }) {
     const handleClickSkin = () => {
-        navigation.navigate('Skin');
+        navigation.navigate('AICamera', { AIType: 'skin' });
     };
+
     const handleClickNail = () => {
-        navigation.navigate('Nail');
+        navigation.navigate('AICamera', { AIType: 'nail' });
     };
 
     return (

@@ -11,6 +11,7 @@ import { AuthProvider } from './context/AuthContext';
 import NavigationBar from './components/NavigationBar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Main from './screens/Main';
+import AICamera from './screens/AI/AICamera';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +38,7 @@ export default function App() {
                     <></>
                 ) : isFirstTime ? (
                     // If isFirstTime is true, show Onboarding
-                    <Stack.Navigator>
+                    <Stack.Navigator initialRouteName="Main">
                         <Stack.Screen
                             name="Onboarding"
                             component={Onboarding}
@@ -63,10 +64,15 @@ export default function App() {
                             component={Main}
                             options={{ headerShown: false }}
                         />
+                        <Stack.Screen
+                            name="AICamera"
+                            component={AICamera}
+                            options={{ headerShown: false }}
+                        />
                     </Stack.Navigator>
                 ) : (
                     // If isFirstTime is false, show OnboardingAuth
-                    <Stack.Navigator>
+                    <Stack.Navigator initialRouteName="Main">
                         <Stack.Screen
                             name="OnboardingAuth"
                             component={OnboardingAuth}
@@ -85,6 +91,11 @@ export default function App() {
                         <Stack.Screen
                             name="Main"
                             component={Main}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="AICamera"
+                            component={AICamera}
                             options={{ headerShown: false }}
                         />
                     </Stack.Navigator>
