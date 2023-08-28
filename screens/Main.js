@@ -1,18 +1,17 @@
 import { View } from 'react-native';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import { COLORS } from '../constants';
 import HomeIcon from '../components/icons/HomeIcon';
-import MapIcon from '../components/icons/MapIcon';
-import ChatbotIcon from '../components/icons/ChatbotIcon';
 import ProfileIcon from '../components/icons/ProfileIcon';
-import AIIcon from '../components/icons/AIIcon';
-import Maps from './Maps';
-import AI from './AI';
-import Chatbot from './Chatbot';
 import Profile from './Profile';
+import HearthIcon from '../components/icons/HearthIcon';
+import AnalyticIcon from '../components/icons/AnalyticIcon';
+import AIIcon from '../components/icons/AIIcon';
+import AI from './AI';
+import MalnutritionPrediction from './MalnutritionPrediction';
+import History from './History';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,8 +52,8 @@ export default function Main() {
                 }}
             ></Tab.Screen>
             <Tab.Screen
-                name="Map"
-                component={Maps}
+                name="Malnutrition"
+                component={MalnutritionPrediction}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
@@ -64,7 +63,7 @@ export default function Main() {
                                     justifyContent: 'center',
                                 }}
                             >
-                                <MapIcon focused={focused} />
+                                <HearthIcon focused={focused} />
                             </View>
                         );
                     },
@@ -93,8 +92,8 @@ export default function Main() {
                 }}
             ></Tab.Screen>
             <Tab.Screen
-                name="Chatbot"
-                component={Chatbot}
+                name="History"
+                component={History}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
@@ -104,7 +103,7 @@ export default function Main() {
                                     justifyContent: 'center',
                                 }}
                             >
-                                <ChatbotIcon focused={focused} />
+                                <AnalyticIcon focused={focused} />
                             </View>
                         );
                     },
