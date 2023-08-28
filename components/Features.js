@@ -23,11 +23,11 @@ export default function Features() {
             >
                 <Menu
                     image={require('../assets/images/menu/nail.png')}
-                    title="Diagnosa Kuku"
+                    title="Diagnosa Malnutrisi"
                 />
                 <Menu
                     image={require('../assets/images/menu/skin.png')}
-                    title="Diagnosa Kulit"
+                    title="Cek Nutrisi Harian"
                 />
                 <Menu
                     image={require('../assets/images/menu/chat.png')}
