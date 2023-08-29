@@ -4,7 +4,7 @@ import OnboardingAuth from './screens/OnboardingAuth';
 import Onboarding from './components/Onboarding';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { getDataStorage } from './utils/storage.utils';
+import { getDataStorage, removeDataStorage } from './utils/storage.utils';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import { AuthProvider } from './context/AuthContext';

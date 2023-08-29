@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import { COLORS } from '../constants';
@@ -12,6 +12,7 @@ import AIIcon from '../components/icons/AIIcon';
 import AI from './AI';
 import MalnutritionPrediction from './MalnutritionPrediction';
 import History from './History';
+import AuthContext from '../context/AuthContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,13 @@ const screenOptions = {
     },
 };
 
-export default function Main() {
+export default function Main({ navigation }) {
+    const { isLogout } = useContext(AuthContext);
+
+    if (isLogout) {
+        return navigation.navigate('Login');
+    }
+
     return (
         <Tab.Navigator screenOptions={screenOptions}>
             <Tab.Screen

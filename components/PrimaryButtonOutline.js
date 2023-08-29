@@ -9,7 +9,6 @@ export default function PrimaryButtonOutline({ children, ...rest }) {
             borderRadius={12}
             width={320}
             height={56}
-            onPress={() => console.log('Hello')}
             contentStyle={{ height: 56, justifyContent: 'center' }}
             labelStyle={{
                 fontSize: 18,

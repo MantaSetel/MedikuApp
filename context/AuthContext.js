@@ -11,11 +11,17 @@ export function AuthProvider({ children }) {
     const [refreshToken, setRefreshToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({ name: '', email: '' });
+    const [isLogout, setIsLogout] = useState(false);
 
     useEffect(() => {
         const getStoredTokens = async () => {
             const storedAccessToken = await getDataStorage('accessToken');
             const storedRefreshToken = await getDataStorage('refreshToken');
+            if (!storedAccessToken || !storedRefreshToken) {
+                setIsLoading(false);
+                setIsLogout(true);
+                return;
+            }
             setAccessToken(storedAccessToken);
             setRefreshToken(storedRefreshToken);
             setIsLoading(false);
@@ -29,6 +35,7 @@ export function AuthProvider({ children }) {
         await setDataStorage('refreshToken', refreshToken);
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
+        setIsLogout(false);
     };
 
     const updateUser = async () => {
@@ -54,6 +61,7 @@ export function AuthProvider({ children }) {
     const logout = async () => {
         await setDataStorage('accessToken', '');
         await setDataStorage('refreshToken', '');
+        setIsLogout(true);
         setAccessToken(null);
         setRefreshToken(null);
     };
@@ -68,6 +76,7 @@ export function AuthProvider({ children }) {
                 logout,
                 user,
                 updateUser,
+                isLogout,
             }}
         >
             {children}

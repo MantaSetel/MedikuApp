@@ -1,15 +1,19 @@
-import {
-    Image,
-    View,
-    Text,
-    SafeAreaView,
-    TouchableOpacity,
-} from 'react-native';
-import React from 'react';
+import { Image, View, Text, SafeAreaView } from 'react-native';
+import React, { useContext } from 'react';
 import { COLORS } from '../../constants';
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet } from 'react-native';
+import PrimaryButtonOutline from '../../components/PrimaryButtonOutline';
+import AuthContext from '../../context/AuthContext';
 
-export default function Profile() {
+export default function Profile({ navigation }) {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogout = async () => {
+        await logout();
+        navigation.navigate('Login');
+    };
+
     return (
         <SafeAreaView
             style={{
@@ -21,57 +25,64 @@ export default function Profile() {
                 <Image
                     source={require('../../assets/images/profil/cover.jpg')}
                     resizeMode="cover"
-                    style={{
-                        height: 228,
-                        width: '100%',
-                    }}
+                    style={styles.coverImage}
                 />
             </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <Image
-                    source={require('../../assets/images/profil/wibu.png')}
-                    resizeMode="contain"
+            <View style={styles.profileContainer}>
+                <View>
+                    <Image
+                        source={require('../../assets/images/profil/wibu.png')}
+                        resizeMode="contain"
+                        style={styles.profileImage}
+                    />
+                    <Text style={styles.name}>{user.name}</Text>
+                    <Text style={styles.email}>{user.email}</Text>
+                </View>
+                <PrimaryButtonOutline
+                    labelStyle={{ color: COLORS.danger, fontSize: 18 }}
                     style={{
-                        height: 155,
-                        width: 155,
-                        borderRadius: 999,
+                        marginBottom: 120,
+                        borderColor: COLORS.danger,
                         borderWidth: 2,
-                        marginTop: -90,
                     }}
-                />
-
-                <Text
-                    style={{
-                        marginVertical: 8,
-                    }}
+                    onPress={handleLogout}
                 >
-                    Uzumaki Naruto
-                </Text>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        marginVertical: 6,
-                        alignItems: 'center',
-                    }}
-                >
-                    <Text style={{ marginLeft: 4 }}>
-                        Konohagakure, Fire Nation
-                    </Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity
-                        style={{
-                            width: 124,
-                            height: 36,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                        }}
-                    >
-                        <Text>Edit Profil</Text>
-                    </TouchableOpacity>
-                </View>
+                    Logout
+                </PrimaryButtonOutline>
             </View>
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    coverImage: {
+        height: 228,
+        width: '100%',
+    },
+    profileImage: {
+        height: 155,
+        width: 155,
+        borderRadius: 999,
+        borderWidth: 2,
+        marginTop: -90,
+    },
+    name: {
+        marginVertical: 8,
+        fontSize: 24,
+        color: COLORS.primary,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    email: {
+        marginVertical: 8,
+        fontSize: 12,
+        color: COLORS.gray,
+        textAlign: 'center',
+    },
+    profileContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: COLORS.background,
+    },
+});

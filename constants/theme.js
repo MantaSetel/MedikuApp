@@ -5,6 +5,7 @@ const COLORS = {
     background: '#FFFFFF',
     gray: '#9B9B9B',
     primaryWithOpacity: 'rgba(45, 100, 227, 0.07)',
+    danger: '#FC0F3A',
 };
 
 export { COLORS };
