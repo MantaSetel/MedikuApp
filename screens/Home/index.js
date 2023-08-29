@@ -1,11 +1,14 @@
 import { SafeAreaView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import HomeHeader from '../../components/HomeHeader';
 import CardHome from '../../components/CardHome';
 import Features from '../../components/Features';
 import CarouselCards from '../../components/CarouselCards';
+import AuthContext from '../../context/AuthContext';
 
 export default function Home() {
+    const { user, updateUser } = useContext(AuthContext);
+
     return (
         <SafeAreaView
             style={{
@@ -17,7 +20,7 @@ export default function Home() {
                 backgroundColor: '#FFF',
             }}
         >
-            <HomeHeader />
+            <HomeHeader name={user?.name} />
             <CardHome />
             <Features />
             <CarouselCards />
