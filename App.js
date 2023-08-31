@@ -12,6 +12,7 @@ import NavigationBar from './components/NavigationBar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Main from './screens/Main';
 import AICamera from './screens/AI/AICamera';
+import MalNutritionPredictionResult from './screens/MalnutritionPrediction/MalNutritionPredictionResult';
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +70,11 @@ export default function App() {
                             component={AICamera}
                             options={{ headerShown: false }}
                         />
+                        <Stack.Screen
+                            name="MalNutritionResult"
+                            component={MalNutritionPredictionResult}
+                            options={{ headerShown: false }}
+                        />
                     </Stack.Navigator>
                 ) : (
                     // If isFirstTime is false, show OnboardingAuth
@@ -96,6 +102,11 @@ export default function App() {
                         <Stack.Screen
                             name="AICamera"
                             component={AICamera}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="MalNutritionResult"
+                            component={MalNutritionPredictionResult}
                             options={{ headerShown: false }}
                         />
                     </Stack.Navigator>

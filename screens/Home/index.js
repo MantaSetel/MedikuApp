@@ -16,7 +16,7 @@ export default function Home() {
                 flex: 1,
                 justifyContent: 'flex-start',
                 alignItems: 'center',
-                paddingTop: 80,
+                paddingTop: 60,
                 paddingHorizontal: 30,
                 backgroundColor: '#FFF',
             }}
