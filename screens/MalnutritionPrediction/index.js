@@ -1,5 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    KeyboardAvoidingView,
+    ScrollView,
+    Platform,
+    Keyboard,
+} from 'react-native';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { API_URL, COLORS } from '../../constants';
 import TextField from '../../components/TextField';
 import PrimaryButton from '../../components/PrimaryButton';
@@ -19,6 +27,38 @@ const MalnutritionPrediction = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [showDialog, setShowDialog] = useState(false);
     const { accessToken, refreshToken } = useContext(AuthContext);
+
+    const [, setIsKeyboardOpen] = useState(false);
+    const scrollViewRef = useRef(null);
+
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setIsKeyboardOpen(true);
+            }
+        );
+
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setIsKeyboardOpen(false);
+                // Scroll back to the top when the keyboard is hidden
+                if (scrollViewRef.current) {
+                    scrollViewRef.current.scrollTo({
+                        x: 0,
+                        y: 0,
+                        animated: true,
+                    });
+                }
+            }
+        );
+
+        return () => {
+            keyboardDidShowListener.remove();
+            keyboardDidHideListener.remove();
+        };
+    }, []);
 
     useEffect(() => {
         if (showDialog === true) {
@@ -88,99 +128,116 @@ const MalnutritionPrediction = ({ navigation }) => {
                 <Text style={styles.subtitle}>
                     Masukkan data anak berdasarkan form yang ada
                 </Text>
-                <View style={styles.form}>
-                    <View>
-                        <Text style={styles.label}>Jenis Kelamin</Text>
-                        <GenderRadioButton
-                            gender={gender}
-                            setGender={setGender}
-                        />
-                    </View>
-                    <View style={styles.input}>
-                        <TextField
-                            keyboardType="numeric"
-                            error=""
-                            value={agePerMonth}
-                            onChangeText={(agePerMonth) =>
-                                setAgePerMonth(agePerMonth)
-                            }
-                            label="Umur Bulan"
-                            placeholder="Masukkan Umur Bulan"
-                        />
-                        <View style={styles.inputLabelAfterWrapper}>
-                            <Text style={styles.inputLabelAfterText}>
-                                bulan
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={styles.input}>
-                        <TextField
-                            keyboardType="numeric"
-                            error=""
-                            value={birthWeight}
-                            onChangeText={(birthWeight) =>
-                                setBirthWeight(birthWeight)
-                            }
-                            label="Berat Lahir"
-                            placeholder="Masukkan Berat Lahir"
-                        />
-                        <View style={styles.inputLabelAfterWrapper}>
-                            <Text style={styles.inputLabelAfterText}>kg</Text>
-                        </View>
-                    </View>
-                    <View style={styles.input}>
-                        <TextField
-                            keyboardType="numeric"
-                            error=""
-                            value={birthHeight}
-                            onChangeText={(birthHeight) =>
-                                setBirthHeight(birthHeight)
-                            }
-                            label="Tinggi Lahir"
-                            placeholder="Masukkan Tinggi Lahir"
-                        />
-                        <View style={styles.inputLabelAfterWrapper}>
-                            <Text style={styles.inputLabelAfterText}>cm</Text>
-                        </View>
-                    </View>
-                    <View style={styles.input}>
-                        <TextField
-                            keyboardType="numeric"
-                            error=""
-                            value={bodyWeight}
-                            onChangeText={(bodyWeight) =>
-                                setBodyWeight(bodyWeight)
-                            }
-                            label="Berat Sekarang"
-                            placeholder="Masukkan Berat Sekarang"
-                        />
-                        <View style={styles.inputLabelAfterWrapper}>
-                            <Text style={styles.inputLabelAfterText}>kg</Text>
-                        </View>
-                    </View>
-                    <View style={styles.input}>
-                        <TextField
-                            keyboardType="numeric"
-                            error=""
-                            value={bodyHeight}
-                            onChangeText={(bodyHeight) =>
-                                setBodyHeight(bodyHeight)
-                            }
-                            label="Tinggi Sekarang"
-                            placeholder="Masukkan Tinggi Sekarang"
-                        />
-                        <View style={styles.inputLabelAfterWrapper}>
-                            <Text style={styles.inputLabelAfterText}>cm</Text>
-                        </View>
-                    </View>
-                    <PrimaryButton
-                        loading={loading}
-                        onPress={handlePredict}
-                        style={styles.submitButton}
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    style={styles.form}
+                >
+                    <ScrollView
+                        ref={scrollViewRef}
+                        contentContainerStyle={{ flexGrow: 1 }}
+                        showsVerticalScrollIndicator={false}
                     >
-                        Submit
-                    </PrimaryButton>
-                </View>
+                        <View>
+                            <Text style={styles.label}>Jenis Kelamin</Text>
+                            <GenderRadioButton
+                                gender={gender}
+                                setGender={setGender}
+                            />
+                        </View>
+                        <View style={styles.input}>
+                            <TextField
+                                keyboardType="numeric"
+                                error=""
+                                value={agePerMonth}
+                                onChangeText={(agePerMonth) =>
+                                    setAgePerMonth(agePerMonth)
+                                }
+                                label="Umur Bulan"
+                                placeholder="Masukkan Umur Bulan"
+                            />
+                            <View style={styles.inputLabelAfterWrapper}>
+                                <Text style={styles.inputLabelAfterText}>
+                                    bulan
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.input}>
+                            <TextField
+                                keyboardType="numeric"
+                                error=""
+                                value={birthWeight}
+                                onChangeText={(birthWeight) =>
+                                    setBirthWeight(birthWeight)
+                                }
+                                label="Berat Lahir"
+                                placeholder="Masukkan Berat Lahir"
+                            />
+                            <View style={styles.inputLabelAfterWrapper}>
+                                <Text style={styles.inputLabelAfterText}>
+                                    kg
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.input}>
+                            <TextField
+                                keyboardType="numeric"
+                                error=""
+                                value={birthHeight}
+                                onChangeText={(birthHeight) =>
+                                    setBirthHeight(birthHeight)
+                                }
+                                label="Tinggi Lahir"
+                                placeholder="Masukkan Tinggi Lahir"
+                            />
+                            <View style={styles.inputLabelAfterWrapper}>
+                                <Text style={styles.inputLabelAfterText}>
+                                    cm
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.input}>
+                            <TextField
+                                keyboardType="numeric"
+                                error=""
+                                value={bodyWeight}
+                                onChangeText={(bodyWeight) =>
+                                    setBodyWeight(bodyWeight)
+                                }
+                                label="Berat Sekarang"
+                                placeholder="Masukkan Berat Sekarang"
+                            />
+                            <View style={styles.inputLabelAfterWrapper}>
+                                <Text style={styles.inputLabelAfterText}>
+                                    kg
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.input}>
+                            <TextField
+                                keyboardType="numeric"
+                                error=""
+                                value={bodyHeight}
+                                onChangeText={(bodyHeight) =>
+                                    setBodyHeight(bodyHeight)
+                                }
+                                label="Tinggi Sekarang"
+                                placeholder="Masukkan Tinggi Sekarang"
+                            />
+                            <View style={styles.inputLabelAfterWrapper}>
+                                <Text style={styles.inputLabelAfterText}>
+                                    cm
+                                </Text>
+                            </View>
+                        </View>
+                        <PrimaryButton
+                            loading={loading}
+                            onPress={handlePredict}
+                            style={styles.submitButton}
+                        >
+                            Submit
+                        </PrimaryButton>
+                    </ScrollView>
+                </KeyboardAvoidingView>
             </SafeAreaView>
         </Provider>
     );
@@ -236,6 +293,9 @@ const styles = StyleSheet.create({
     dialog: {
         backgroundColor: COLORS.background,
         paddingVertical: 20,
+    },
+    form: {
+        paddingBottom: 100,
     },
 });
 
