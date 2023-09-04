@@ -1,31 +1,17 @@
 export default [
     {
         id: '1',
-        title: 'SnapDiagnose: Detektif Kesehatan Kuku',
+        title: 'MalDiagnose: Detektif Malnutrisi',
         description:
-            'Solusi cepat & akurat diagnosis penyakit lewat foto kuku. Temukan diagnosis dan solusi tepat dengan teknologi mendalam untuk kesehatan Anda.',
-        image: require('./assets/images/slides/kuku.png'),
+            'Solusi cepat & akurat diagnosis awal malnutrisi pada anak. Temukan diagnosis dan solusi tepat dengan teknologi mendalam untuk kesehatan Anda.',
+        image: require('./assets/images/slides/malnutrisi.png'),
     },
     {
         id: '2',
-        title: 'SkinSense: Ahli Kesehatan Kulit',
+        title: 'NutriSense: Pantau Kecukupan Gizi',
         description:
-            'Kulit yang sehat adalah cermin kesehatan dan kecantikan Anda. Dengan SkinSense, kini Anda dapat mengidentifikasi berbagai masalah kulit dengan mudah melalui foto.',
-        image: require('./assets/images/slides/kulit.png'),
-    },
-    {
-        id: '3',
-        title: 'HealthBot: Sahabat #WargaSehat  24/7',
-        description:
-            'Sahabat kesehatan Anda, jawab pertanyaan seputar kesehatan tanpa menunggu, tanpa repot mencari informasi medis. Tanya sekarang, solusi cepat dan tepat.',
-        image: require('./assets/images/slides/bot.png'),
-    },
-    {
-        id: '4',
-        title: 'HealthNearby - Akses Kesehatan Mudah',
-        description:
-            'Ketika Anda membutuhkan bantuan medis mendesak atau ingin menemukan layanan kesehatan terdekat dengan mudah, HealthNearby adalah solusinya.',
-        image: require('./assets/images/slides/nearby.png'),
+            'Solusi cepat & akurat deteksi stunting dari anak anda berdasarkan data tinggi badan dan berat badan',
+        image: require('./assets/images/slides/nutrisi.png'),
     },
     {
         id: '5',

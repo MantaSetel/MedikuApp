@@ -1,18 +1,18 @@
 import { Image, StyleSheet, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import PrimaryButton from '../../components/PrimaryButton';
-import PrimaryButtonOutline from '../../components/PrimaryButtonOutline';
 import AILayout from '../../layouts/AILayout';
-import AIHeader from '../../components/AIHeader';
 
 export default function AI({ navigation }) {
-    const handleClickSkin = () => {
-        navigation.navigate('AICamera', { AIType: 'skin' });
+    const handleClickButton = () => {
+        navigation.navigate('AICamera');
     };
 
-    const handleClickNail = () => {
-        navigation.navigate('AICamera', { AIType: 'nail' });
-    };
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {});
+
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <AILayout>
@@ -23,12 +23,12 @@ export default function AI({ navigation }) {
                 />
 
                 <View style={styles.footer}>
-                    <PrimaryButton onPress={handleClickSkin} marginBottom={16}>
-                        Deteksi lewat kulit
+                    <PrimaryButton
+                        onPress={handleClickButton}
+                        marginBottom={16}
+                    >
+                        Deteksi Nutrisi
                     </PrimaryButton>
-                    <PrimaryButtonOutline onPress={handleClickNail}>
-                        Deteksi lewat kuku
-                    </PrimaryButtonOutline>
                 </View>
             </View>
         </AILayout>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         marginBottom: 46,
     },
     footer: {
-        flex: 0.2,
+        flex: 0.4,
         justifyContent: 'center',
         alignItems: 'center',
     },

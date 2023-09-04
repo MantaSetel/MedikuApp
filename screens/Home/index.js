@@ -6,9 +6,16 @@ import Features from '../../components/Features';
 import CarouselCards from '../../components/CarouselCards';
 import AuthContext from '../../context/AuthContext';
 import BlurObject from '../../components/svg/BlurObject';
+import { removeDataStorage } from '../../utils/storage.utils';
 
-export default function Home() {
-    const { user, updateUser } = useContext(AuthContext);
+export default function Home({ navigation }) {
+    const { user } = useContext(AuthContext);
+
+    const handleToMalnutrition = () => {
+        return navigation.navigate('AICamera');
+    };
+
+    removeDataStorage('isFirstTime');
 
     return (
         <SafeAreaView
@@ -23,7 +30,7 @@ export default function Home() {
         >
             <BlurObject />
             <HomeHeader name={user?.name} />
-            <CardHome />
+            <CardHome handleToMalnutrition={handleToMalnutrition} />
             <Features />
             <CarouselCards />
         </SafeAreaView>

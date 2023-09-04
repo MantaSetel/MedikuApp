@@ -13,6 +13,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Main from './screens/Main';
 import AICamera from './screens/AI/AICamera';
 import MalNutritionPredictionResult from './screens/MalnutritionPrediction/MalNutritionPredictionResult';
+import HistoryDetail from './screens/History/HistoryDetail';
+import AIResult from './screens/AI/AIResult';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +41,7 @@ export default function App() {
                     <></>
                 ) : isFirstTime ? (
                     // If isFirstTime is true, show Onboarding
-                    <Stack.Navigator initialRouteName="Main">
+                    <Stack.Navigator initialRouteName="Onboaring">
                         <Stack.Screen
                             name="Onboarding"
                             component={Onboarding}
@@ -75,6 +77,16 @@ export default function App() {
                             component={MalNutritionPredictionResult}
                             options={{ headerShown: false }}
                         />
+                        <Stack.Screen
+                            name="HistoryDetail"
+                            component={HistoryDetail}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="AIResult"
+                            component={AIResult}
+                            options={{ headerShown: false }}
+                        />
                     </Stack.Navigator>
                 ) : (
                     // If isFirstTime is false, show OnboardingAuth
@@ -107,6 +119,16 @@ export default function App() {
                         <Stack.Screen
                             name="MalNutritionResult"
                             component={MalNutritionPredictionResult}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="HistoryDetail"
+                            component={HistoryDetail}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="AIResult"
+                            component={AIResult}
                             options={{ headerShown: false }}
                         />
                     </Stack.Navigator>

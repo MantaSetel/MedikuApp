@@ -9,6 +9,7 @@ export default function Features() {
                 marginTop: 33,
                 height: 136,
                 width: '100%',
+                marginBottom: 20,
             }}
         >
             <Text style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>
@@ -22,20 +23,12 @@ export default function Features() {
                 }}
             >
                 <Menu
-                    image={require('../assets/images/menu/nail.png')}
+                    image={require('../assets/images/menu/malnu.png')}
                     title="Diagnosa Malnutrisi"
                 />
                 <Menu
-                    image={require('../assets/images/menu/skin.png')}
+                    image={require('../assets/images/menu/nutrisen.png')}
                     title="Cek Nutrisi Harian"
-                />
-                <Menu
-                    image={require('../assets/images/menu/chat.png')}
-                    title="Sahabat Kesehatan"
-                />
-                <Menu
-                    image={require('../assets/images/menu/location.png')}
-                    title="Layanan Terdekat"
                 />
             </View>
         </View>

@@ -31,7 +31,7 @@ export default function Profile({ navigation }) {
             <View style={styles.profileContainer}>
                 <View>
                     <Image
-                        source={require('../../assets/images/profil/wibu.png')}
+                        source={require('../../assets/images/profil/Profile Image.png')}
                         resizeMode="contain"
                         style={styles.profileImage}
                     />

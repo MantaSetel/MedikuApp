@@ -2,7 +2,7 @@ import { View, Text, Image } from 'react-native';
 import React from 'react';
 import PrimaryButton from './PrimaryButton';
 
-export default function CardHome() {
+export default function CardHome({ handleToMalnutrition }) {
     return (
         <View
             elevation={4}
@@ -24,9 +24,10 @@ export default function CardHome() {
             }}
         >
             <Text style={{ fontSize: 16, fontWeight: 600 }}>
-                Anda mempunyai Keluhan?
+                Khawatir makanan anak anda?
             </Text>
             <PrimaryButton
+                onPress={handleToMalnutrition}
                 labelStyle={{
                     fontSize: 12,
                     lineHeight: 15,
@@ -39,9 +40,9 @@ export default function CardHome() {
                 width={158}
                 height={35}
                 marginTop={22}
-                icon="camera-outline"
+                icon="camera"
             >
-                Diagnosa sekarang
+                Cek Sekarang
             </PrimaryButton>
             <Image
                 style={{
@@ -61,7 +62,7 @@ export default function CardHome() {
                     width: 82,
                     height: 102,
                 }}
-                source={require('../assets/hand-phone.png')}
+                source={require('../assets/pregnancy.png')}
             />
         </View>
     );

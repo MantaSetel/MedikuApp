@@ -8,26 +8,29 @@ const getAccessAndRefreshToken = async () => {
     return { accessToken, refreshToken };
 };
 
+const axiosInterceptor = (accessToken, refreshToken) => {
+    axios.interceptors.request.use((config) => {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+        config.headers['x-refresh'] = refreshToken;
+        return config;
+    });
+};
+
 const get = async (endpoint, body, configs = {}) => {
     const { accessToken, refreshToken } = await getAccessAndRefreshToken();
+    axiosInterceptor(accessToken, refreshToken);
     const result = await axios.get(`${API_URL}/${endpoint}`, body, {
         ...configs,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'x-refresh': refreshToken,
-            ...configs?.headers,
-        },
     });
     return result.data;
 };
 
 const post = async (endpoint, body, configs = {}) => {
     const { accessToken, refreshToken } = await getAccessAndRefreshToken();
+    axiosInterceptor(accessToken, refreshToken);
     const result = await axios.post(`${API_URL}/${endpoint}`, body, {
         ...configs,
         headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'x-refresh': refreshToken,
             ...configs?.headers,
         },
     });
@@ -36,11 +39,10 @@ const post = async (endpoint, body, configs = {}) => {
 
 const put = async (endpoint, body, configs = {}) => {
     const { accessToken, refreshToken } = await getAccessAndRefreshToken();
+    axiosInterceptor(accessToken, refreshToken);
     const result = await axios.put(`${API_URL}/${endpoint}`, body, {
         ...configs,
         headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'x-refresh': refreshToken,
             ...configs?.headers,
         },
     });
